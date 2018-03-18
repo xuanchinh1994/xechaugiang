@@ -208,40 +208,21 @@ jQuery(document).ready(function ($) {
             //     }
             // }
         }
-    }).on('success.form.bv', function (e) {
+    }).on('success.form.bv', function (e) {            
             var $form = $(e.target);
-            var bv = $form.data('bootstrapValidator');
-
-            $.post($form.attr('action'), $form.serialize())
-                .success(function (msg) {
-                    // great success
-                    console.log('Ajax done');                    
-                    $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
-                })
-                .fail(function (xhr, status, error) {
-                    bv.updateStatus('email', 'INVALID', 'callback');
-                    console.log('Ajax failed');
-                    $('#contact_form').data('bootstrapValidator').resetForm();
-                })                        
-
-            // Prevent form submission
-            // e.preventDefault();
-
-            // Get the form instance
-            // var $form = $(e.target);
-
-            // Get the BootstrapValidator instance
             // var bv = $form.data('bootstrapValidator');
-
-            // Use Ajax to submit form data
-            // $.post(
-            //     $form.attr('action'),
-            //     $form.serialize(),
-            //     function (result) {
-            //         console.log(result);
-            //     },
-            //     'json'
-            // );
+            var saveData = $.ajax({
+                type: 'POST',
+                url: "mail_handler.php",
+                data: $form.serialize(),
+                dataType: "text",
+                success: function(resultData) { 
+                    $('#success_message').slideDown({ opacity: "show" }, "slow");
+                },
+                error: function(resultData) { 
+                    alert("Save Failed");
+                }
+            });
         });
 
 });
