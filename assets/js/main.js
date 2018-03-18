@@ -93,9 +93,29 @@ jQuery(document).ready(function ($) {
     });
     //End
 
-});
+    var date_start = $('input[name="start"]'); //our date input has the name "date"
+    var container_start = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+    date_start.datepicker({
+        format: 'dd/mm/yyyy',
+        container: container_start,
+        todayHighlight: true,
+        autoclose: true,
+        orientation: "bottom auto",
+    })
 
-$(document).ready(function () {
+
+    var date_input = $('input[name="date"]'); //our date input has the name "date"
+    var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+    date_input.datepicker({
+        format: 'dd/mm/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+        orientation: "bottom auto",
+    })
+
+    // $("#contact_form").ajaxSubmit({ url: 'mail_handler.php', type: 'post' })
+
     $('#contact_form').bootstrapValidator({
         // To use feedback icons, ensure that you use Bootstrap v3.1.0 or later
         feedbackIcons: {
@@ -188,20 +208,21 @@ $(document).ready(function () {
             //     }
             // }
         }
-    })
-        .on('success.form.bv', function (e) {
+    }).on('success.form.bv', function (e) {
             var $form = $(e.target);
             var bv = $form.data('bootstrapValidator');
 
             $.post($form.attr('action'), $form.serialize())
                 .success(function (msg) {
                     // great success
+                    console.log('Ajax done');                    
+                    $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
                 })
                 .fail(function (xhr, status, error) {
                     bv.updateStatus('email', 'INVALID', 'callback');
-                })
-            // $('#success_message').slideDown({ opacity: "show" }, "slow") // Do something ...
-            // $('#contact_form').data('bootstrapValidator').resetForm();
+                    console.log('Ajax failed');
+                    $('#contact_form').data('bootstrapValidator').resetForm();
+                })                        
 
             // Prevent form submission
             // e.preventDefault();
@@ -222,34 +243,5 @@ $(document).ready(function () {
             //     'json'
             // );
         });
+
 });
-$(document).ready(function () {
-    $("#contact_form").ajaxSubmit({ url: 'mail_handler.php', type: 'post' })
-});
-
-$(document).ready(function () {
-    var date_input = $('input[name="date"]'); //our date input has the name "date"
-    var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
-    date_input.datepicker({
-        format: 'dd/mm/yyyy',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-        orientation: "bottom auto",
-    })
-})
-$(document).ready(function () {
-    var date_start = $('input[name="start"]'); //our date input has the name "date"
-    var container_start = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
-    date_start.datepicker({
-        format: 'dd/mm/yyyy',
-        container: container_start,
-        todayHighlight: true,
-        autoclose: true,
-        orientation: "bottom auto",
-    })
-})
-
-
-
-
