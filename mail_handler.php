@@ -11,11 +11,11 @@
 		// $headers="From: ".$email;
 		$headers = "From: " . $_POST["userName"] . "<". $_POST["userEmail"] .">\r\n";
 
-		if(mail($to, $subject, $message, $headers)){
+		// if(mail($to, $subject, $message, $headers)){
 			echo "<h1>Sent Successfully! Thank you"." ".$first_name.", We will contact you shortly!</h1>";
-		}
-		else{
-			echo "Something went wrong!";
-		}
+		// }
+		// else{
+			// echo "Something went wrong!";
+		// }
 	}
 ?>
