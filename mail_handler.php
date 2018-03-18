@@ -8,7 +8,8 @@
 		$to='xuanchinh1994@gmail.com'; // Receiver Email ID, Replace with your email ID
 		$subject='Form Submission';
 		$message="Name :".$first_name."\n"."Phone :".$telephone."\n"."Wrote the following :"."\n\n".$from;
-		$headers="From: ".$email;
+		// $headers="From: ".$email;
+		$headers = "From: " . $_POST["userName"] . "<". $_POST["userEmail"] .">\r\n";
 
 		if(mail($to, $subject, $message, $headers)){
 			echo "<h1>Sent Successfully! Thank you"." ".$first_name.", We will contact you shortly!</h1>";
