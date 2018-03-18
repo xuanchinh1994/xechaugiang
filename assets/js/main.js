@@ -218,7 +218,7 @@ jQuery(document).ready(function ($) {
                 dataType: "text",
                 success: function(resultData) { 
                     $('#success_message').slideDown({ opacity: "show" }, "slow");
-                },
+                },  
                 error: function(resultData) { 
                     alert("Save Failed");
                 }

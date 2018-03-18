@@ -1,4 +1,4 @@
-<?php	
+<?php
 	$first_name=$_POST['first_name'];
 	$email=$_POST['email'];
 	$telephone=$_POST['telephone'];
@@ -7,8 +7,9 @@
 	$to='xuanchinh1994@gmail.com'; // Receiver Email ID, Replace with your email ID
 	$subject='Form Submission';
 	$message="Name :".$first_name."\n"."Phone :".$telephone."\n"."Wrote the following :"."\n\n".$from;
+	var_dump($message);
 	// $headers="From: ".$email;
-	$headers = "From: " . $first_name . "<". $email .">\r\n";
+	$headers = "From: " . $first_name . "<". $email .">\r\n".'Content-type: text/html; charset=UTF-8' .'\r\n';
 
 	if(mail($to, $subject, $message, $headers)){
 		echo "Sent Successfully! Thank you"." ".$first_name.", We will contact you shortly!</h1>";
