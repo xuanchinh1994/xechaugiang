@@ -208,21 +208,21 @@ jQuery(document).ready(function ($) {
             //     }
             // }
         }
-    }).on('success.form.bv', function (e) {            
-            var $form = $(e.target);
-            // var bv = $form.data('bootstrapValidator');
-            var saveData = $.ajax({
-                type: 'POST',
-                url: "mail_handler.php",
-                data: $form.serialize(),
-                dataType: "text",
-                success: function(resultData) { 
-                    $('#success_message').slideDown({ opacity: "show" }, "slow");
-                },  
-                error: function(resultData) { 
-                    alert("Save Failed");
-                }
-            });
+    }).on('success.form.bv', function (e) {
+        var $form = $(e.target);
+        // var bv = $form.data('bootstrapValidator');
+        var saveData = $.ajax({
+            type: 'POST',
+            url: "mail_handler.php",
+            data: $form.serialize(),
+            dataType: "text",
+            success: function (resultData) {
+                $('#success_message').slideDown({ opacity: "show" }, "slow");
+            },
+            error: function (resultData) {
+                alert("Save Failed");
+            }
         });
-
+    });
+    
 });
