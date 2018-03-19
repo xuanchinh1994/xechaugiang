@@ -19,10 +19,10 @@
 
 
     <link rel="stylesheet" href="assets/css/slick/slick.css">
-    <link rel="stylesheet" href="assets/css/slick/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="assets/css/animate.css">
     <link rel="stylesheet" href="assets/css/bootstrap-datepicker.min.css">
-    <link rel="stylesheet" href="assets/css/bootstrap-datepicker3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker3.css">
     <link rel="stylesheet" href="assets/css/iconfont.css">
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
@@ -78,32 +78,52 @@
 
 
         <nav id="abcde" class="navbar navbar-default bootsnav navbar-fixed">
-            <!-- <div class="navbar-top bg-grey fix">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="navbar-callus text-left sm-text-center">
-                                    <ul class="list-inline">
-                                        <li><a href=""><i class="fa fa-phone"></i> Gọi cho chúng tôi: 1234 5678 90</a></li>
-                                        <li><a href=""><i class="fa fa-envelope-o"></i> Liên hệ với chúng tôi: your@email.com</a></li>
-                                    </ul>
-                                </div>
+            <div class="navbar-top bg-grey fix">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="navbar-callus text-left sm-text-center">
+                                <ul class="list-inline">
+                                    <li>
+                                        <a href="">
+                                            <i class="fa fa-phone"></i> Gọi cho chúng tôi: 0912 485 952</a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <i class="fa fa-envelope-o"></i> Liên hệ với chúng tôi: xegiangchau.service@gmail.com</a>
+                                    </li>
+                                </ul>
                             </div>
-                            <div class="col-md-6">
-                                <div class="navbar-socail text-right sm-text-center">
-                                    <ul class="list-inline">
-                                        <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href=""><i class="fa fa-linkedin"></i></a></li>
-                                        <li><a href=""><i class="fa fa-google-plus"></i></a></li>
-                                        <li><a href=""><i class="fa fa-behance"></i></a></li>
-                                        <li><a href=""><i class="fa fa-dribbble"></i></a></li>
-                                    </ul>
-                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="navbar-socail text-right sm-text-center">
+                                <ul class="list-inline">
+                                    <li>
+                                        <a href="">
+                                            <i class="fa fa-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="">
+                                            <i class="fa fa-skype"></i>
+                                        </a>
+                                    </li>
+                                    <!-- <li>
+                                        <a href="">
+                                            <i class="fa fa-linkedin"></i>
+                                        </a>
+                                    </li> -->
+                                    <li>
+                                        <a href="">
+                                            <i class="fa fa-google-plus"></i>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </div> -->
+                </div>
+            </div>
 
             <!-- Start Top Search -->
             <!-- <div class="top-search">
@@ -163,7 +183,7 @@
                         <li>
                             <a href="#test">Blog</a>
                         </li>
-                        
+
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -177,7 +197,8 @@
                     <h2>Xe 4 Chỗ</h2>
                     <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the
                         blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language
-                        ocean.</p>
+                        ocean.
+                    </p>
                     <a href="#" class="da-link">Read more</a>
                     <div class="da-img">
                         <img src="images/xe_4.png" alt="image01" />
@@ -218,7 +239,7 @@
                 </nav>
             </div>
         </section>
-        
+
         <section id="contact">
             <div class="section-content">
                 <h1 class="section-header">Đặt xe
@@ -256,7 +277,7 @@
                                         <span class="input-group-addon">
                                             <i class="glyphicon glyphicon-earphone"></i>
                                         </span>
-                                        <input name="telephone" placeholder="(84)986246948" class="form-control" type="number">
+                                        <input name="telephone" placeholder="(84)986246948" class="form-control" type="tel">
                                     </div>
                                 </div>
                             </div>
@@ -307,25 +328,23 @@
 
                             <!-- Text input-->
                             <div class="col-md-4">
-                                <div class="form-box">
-
-
-                                    <div class="col-md-6">
-                                        <label for="start">Thời Gian Đi</label>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
+                                <div class="form-group">
+                                    <div class="col-md-6 dateContainer">
+                                        <label for="startDate">Thời Gian Đi</label>
+                                        <div class="input-group input-append date" id="startDatePicker">
+                                            <span class="input-group-addon add-on">
                                                 <i class="glyphicon glyphicon-map-marker" style="color: #39b54a;"></i>
                                             </span>
-                                            <input class="form-control" id="start" name="start" placeholder="DD/MM/YYYY" type="text" />
+                                            <input class="form-control" name="startDate" placeholder="DD/MM/YYYY" type="text" />
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <label for="date">Thời Gian Về</label>
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
+                                    <div class="col-md-6 dateContainer">
+                                        <label for="endDate">Thời Gian Về</label>
+                                        <div class="input-group input-append date" id="endDatePicker">
+                                            <span class="input-group-addon add-on">
                                                 <i class="glyphicon glyphicon-map-marker" style="color: #39b54a;"></i>
                                             </span>
-                                            <input class="form-control" id="date" name="date" placeholder="DD/MM/YYY" type="text" />
+                                            <input class="form-control" name="endDate" placeholder="DD/MM/YYY" type="text" />
                                         </div>
 
                                     </div>
@@ -1119,7 +1138,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
     <script src="assets/js/jquery.collapse.js"></script>
     <script src="assets/js/bootsnav.js"></script>
-    <script src="assets/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
 
 
@@ -1127,16 +1146,16 @@
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/main.js"></script>
     <script type="text/javascript" src="assets/js/jquery.cslider.js"></script>
-		<script type="text/javascript">
-			$(function() {
-			
-				$('#da-slider').cslider({
-					autoplay	: true,
-					bgincrement	: 450
-				});
-			
-			});
-		</script>	
+    <script type="text/javascript">
+        $(function () {
+
+            $('#da-slider').cslider({
+                autoplay: true,
+                bgincrement: 450
+            });
+
+        });
+    </script>
 
 </body>
 

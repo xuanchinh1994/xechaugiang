@@ -93,27 +93,47 @@ jQuery(document).ready(function ($) {
     });
     //End
 
-    var date_start = $('input[name="start"]'); //our date input has the name "date"
-    var container_start = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
-    date_start.datepicker({
-        format: 'dd/mm/yyyy',
-        container: container_start,
-        todayHighlight: true,
-        autoclose: true,
-        orientation: "bottom auto",
-    })
+    // var date_start = $('input[name="startDate"]'); //our date input has the name "date"
+    // var container_start = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+    // date_start.datepicker({
+    //     format: 'dd/mm/yyyy',
+    //     container: container_start,
+    //     todayHighlight: true,
+    //     autoclose: true,
+    //     orientation: "bottom auto",
+    // })
 
 
-    var date_input = $('input[name="date"]'); //our date input has the name "date"
-    var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
-    date_input.datepicker({
-        format: 'dd/mm/yyyy',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-        orientation: "bottom auto",
-    })
+    // var date_end = $('input[name="endDate"]'); //our date input has the name "date"
+    // var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+    // date_end.datepicker({
+    //     format: 'dd/mm/yyyy',
+    //     container: container,
+    //     todayHighlight: true,
+    //     autoclose: true,
+    //     orientation: "bottom auto",
+    // })
 
+    $('#startDatePicker')
+        .datepicker({
+            format: 'dd/mm/yyyy',
+            todayHighlight: true,
+            orientation: "bottom auto",
+        })
+        .on('changeDate', function (e) {
+            // Revalidate the start date field
+            $('#contact_form').formValidation('revalidateField', 'startDate');
+        });
+
+    $('#endDatePicker')
+        .datepicker({
+            format: 'dd/mm/yyyy',
+            todayHighlight: true,
+            orientation: "bottom auto",
+        })
+        .on('changeDate', function (e) {
+            $('#contact_form').formValidation('revalidateField', 'endDate');
+        });
     // $("#contact_form").ajaxSubmit({ url: 'mail_handler.php', type: 'post' })
 
     $('#contact_form').bootstrapValidator({
@@ -162,51 +182,40 @@ jQuery(document).ready(function ($) {
                     }
                 }
             },
-            start: {
+            startDate: {
                 validators: {
+                    notEmpty: {
+                        message: 'Hãy nhập thời gian'
+                    },
+                    date: {
+                        format: 'DD/MM/YYYY',
+                        max: 'endDate',
+                        message: 'The start date is not a valid'
+                    }
+                }
+            },
+            endDate: {
+                validators: {
+                    notEmpty: {
+                        message: 'Hãy nhập thời gian'
+                    },
+                    date: {
+                        format: 'DD/MM/YYYY',
+                        max: 'startDate',
+                        message: 'The start date is not a valid'
+                    }
+                }
+            },
+        }
+    }).on('success.field.fv', function (e, data) {
+        if (data.field === 'startDate' && !data.fv.isValidField('endDate')) {
+            // We need to revalidate the end date
+            data.fv.revalidateField('endDate');
+        }
 
-                    notEmpty: {
-                        message: 'Hãy nhập thời gian'
-                    }
-                }
-            },
-            date: {
-                validators: {
-                    notEmpty: {
-                        message: 'Hãy nhập thời gian'
-                    }
-                }
-            },
-            // state: {
-            //     validators: {
-            //         notEmpty: {
-            //             message: 'Bạn chưa chọn xe'
-            //         }
-            //     }
-            // },
-            // zip: {
-            //     validators: {
-            //         notEmpty: {
-            //             message: 'Please supply your zip code'
-            //         },
-            //         zipCode: {
-            //             country: 'US',
-            //             message: 'Please supply a vaild zip code'
-            //         }
-            //     }
-            // },
-            // comment: {
-            //     validators: {
-            //         stringLength: {
-            //             min: 10,
-            //             max: 200,
-            //             message: 'Please enter at least 10 characters and no more than 200'
-            //         },
-            //         notEmpty: {
-            //             message: 'Please supply a description of your project'
-            //         }
-            //     }
-            // }
+        if (data.field === 'endDate' && !data.fv.isValidField('startDate')) {
+            // We need to revalidate the start date
+            data.fv.revalidateField('startDate');
         }
     }).on('success.form.bv', function (e) {
         var $form = $(e.target);
@@ -224,5 +233,5 @@ jQuery(document).ready(function ($) {
             }
         });
     });
-    
+
 });
