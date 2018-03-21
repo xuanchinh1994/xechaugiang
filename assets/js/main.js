@@ -122,7 +122,7 @@ jQuery(document).ready(function ($) {
         })
         .on('changeDate', function (e) {
             // Revalidate the start date field
-            $('#contact_form').formValidation('revalidateField', 'startDate');
+            $('#contact_form').bootstrapValidator('revalidateField', 'startDate');
         });
 
     $('#endDatePicker')
@@ -132,7 +132,7 @@ jQuery(document).ready(function ($) {
             orientation: "bottom auto",
         })
         .on('changeDate', function (e) {
-            $('#contact_form').formValidation('revalidateField', 'endDate');
+            $('#contact_form').bootstrapValidator('revalidateField', 'endDate');
         });
     // $("#contact_form").ajaxSubmit({ url: 'mail_handler.php', type: 'post' })
 
